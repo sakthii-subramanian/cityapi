@@ -1,1 +1,6 @@
-language: csharp
+addlanguage: csharp
+mono: none
+dotnet: 5.0.2
+script:
+ - dotnet restore
+ - dotnet build
