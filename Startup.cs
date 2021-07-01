@@ -40,19 +40,16 @@ namespace CityApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            FileServerOptions fileServerOptions = new FileServerOptions();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CityApi v1"));
                 
-                fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
-                fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("index.html");
-                app.UseFileServer(fileServerOptions);
- 
-                app.UseDefaultFiles();
-                app.UseStaticFiles();
+                
+                
             }
             
 
